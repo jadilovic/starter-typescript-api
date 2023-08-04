@@ -13,6 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
+const axios_1 = __importDefault(require("axios"));
 const user_schema_1 = __importDefault(require("../mongodb/schema/user.schema"));
 const controller = (0, express_1.Router)();
 controller
@@ -33,8 +34,17 @@ controller
     }
 }))
     .get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log('TEST');
     try {
-        const users = yield user_schema_1.default.find({});
+        // const users = await UserModel.find({});
+        const apiUrl = 'https://gorest.co.in/public/v2/users';
+        const response = yield axios_1.default.get(apiUrl, {
+            headers: {
+                Authorization: '58f253318e7bf1e57a6c82cae6ce5968acc7247e2777273e2e1c81bb40520d14',
+            },
+        });
+        const users = response.data;
+        console.log(users.length);
         res.status(200).json(users);
     }
     catch (error) {

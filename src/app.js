@@ -31,3 +31,47 @@ console.log(getDuplicates(text));
 const oneObj = { name: 'hello' };
 console.log(oneObj);
 const names = ['bob'];
+class me {
+    constructor() {
+        this.name = 'aki';
+        this.age = 44;
+    }
+}
+function myObj(obj) {
+    return 'test ' + obj.name + ' ' + obj.age;
+}
+console.log(myObj({ name: 'wou', age: 22 }));
+function getLocation(obj) {
+    return `${obj.name} lives at ${obj.address.city} with post number ${obj.address.post}`;
+}
+console.log(getLocation({ name: 'mark', address: { city: 'Bosanski Novi', post: 9999 } }));
+var Category;
+(function (Category) {
+    Category["Sport"] = "S";
+    Category["Movie"] = "M";
+    Category["Animal"] = "A";
+    Category["Car"] = "C";
+})(Category || (Category = {}));
+function getCategory(cat, cat1) {
+    return cat + cat1;
+}
+console.log(getCategory(Category.Animal, Category.Car));
+const myValue = 'Testing';
+const myLength = myValue.length;
+console.log(myLength);
+function getTypes(value) {
+    return value;
+}
+console.log(getTypes({ name: 'aki', age: 11 }));
+function usingGenerics(value) {
+    return [value];
+}
+console.log(usingGenerics('boby'));
+console.log(usingGenerics(33));
+class DoBig {
+    doIt() {
+        console.log('I am doing it');
+    }
+}
+const doMe = new DoBig();
+doMe.doIt();

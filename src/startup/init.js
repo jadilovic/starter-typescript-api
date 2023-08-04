@@ -18,7 +18,7 @@ const appSetup = (app) => __awaiter(void 0, void 0, void 0, function* () {
         yield (0, mongodb_1.default)();
         const APP_PORT = Number(process.env.APP_PORT) || 5000;
         app.listen(APP_PORT, () => {
-            console.log('Server is listening at port ' + APP_PORT);
+            console.log('Server is listening at port:: ' + APP_PORT);
         });
     }
     catch (error) {

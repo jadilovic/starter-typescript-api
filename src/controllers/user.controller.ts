@@ -1,4 +1,5 @@
 import { Router, Request, Response } from 'express';
+import axios from 'axios';
 import { IUser } from '../mongodb/model/user.model';
 import UserModel from '../mongodb/schema/user.schema';
 
@@ -22,8 +23,20 @@ controller
 		}
 	})
 	.get('/', async (req: Request, res: Response) => {
+		console.log('TEST');
+
 		try {
-			const users = await UserModel.find({});
+			// const users = await UserModel.find({});
+			const apiUrl = 'https://gorest.co.in/public/v2/users';
+			const response = await axios.get(apiUrl, {
+				headers: {
+					Authorization:
+						'58f253318e7bf1e57a6c82cae6ce5968acc7247e2777273e2e1c81bb40520d14',
+				},
+			});
+			const users = response.data;
+			console.log(users.length);
+
 			res.status(200).json(users);
 		} catch (error) {
 			console.log(error);
